@@ -3,4 +3,5 @@ private
 sessions
 tmp
 vendor
+scripts
 scripts/.admin_password.txt
