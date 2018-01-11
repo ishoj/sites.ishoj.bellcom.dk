@@ -1,3 +1,8 @@
+Fieldable Panels Panes 7.x-1.10, 2016-05-04
+-------------------------------------------
+By cboyden, DamienMcKenna, dsnopek: Admin title formatting.
+
+
 Fieldable Panels Panes 7.x-1.9, 2016-05-03
 ------------------------------------------
 #2487888 by coenvanvliet, DamienMcKenna, joelstein: Clear an object's cache

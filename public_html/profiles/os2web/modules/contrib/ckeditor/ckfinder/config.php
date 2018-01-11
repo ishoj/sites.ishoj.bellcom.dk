@@ -29,15 +29,15 @@ $config['LicenseKey'] = 'L2HJ-3WQM-2M9V-MJC4-WEHN-8Q27-37UH';
  Uncomment lines below to enable PHP error reporting and displaying PHP errors.
  Do not do this on a production server. Might be helpful when debugging why CKFinder does not work as expected.
 */
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
+ error_reporting(E_ALL);
+ ini_set('display_errors', 1);
 
 /*
 To make it easy to configure CKFinder, the $baseUrl and $baseDir can be used.
 Those are helper variables used later in this config file.
 */
 
-$baseUrl = '/home/ishoj/web/ishoj.dk/public_html/sites/default/files/';
+$baseUrl = '/files/';
 
 $baseDir = resolveUrl($baseUrl);
 require_once '../../../../includes/filemanager.config.php';
@@ -78,7 +78,7 @@ To be able to use this feature, you must initialize the session data by
 uncommenting the following "session_start()" call.
 */
 $config['RoleSessionVar'] = 'CKFinder_UserRole';
-//session_start();
+session_start();
 
 /*
 AccessControl : used to restrict access or features to specific folders.

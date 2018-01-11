@@ -4,3 +4,9 @@ sites/*/settings*.php
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
+sites/*/_files
+
+profiles/os2web/modules/contrib/ckeditor/ckfinder/core/connector/php/files
+profiles/os2web/modules/contrib/ckeditor/ckfinder/core/connector/php/_thumbs
+profiles/os2web/modules/contrib/ckeditor/ckfinder/core/connector/php/images/*.jpg
+profiles/os2web/modules/contrib/ckeditor/ckfinder/core/connector/php/images/*.JPG
