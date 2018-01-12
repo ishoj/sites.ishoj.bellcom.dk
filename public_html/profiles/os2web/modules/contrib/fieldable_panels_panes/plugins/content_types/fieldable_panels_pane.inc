@@ -200,7 +200,17 @@ function fieldable_panels_panes_fieldable_panels_pane_content_type_render($subty
  */
 function _fieldable_panels_panes_admin_title_from_entity($entity) {
   if (!empty($entity) && is_object($entity)) {
-    $output = !empty($entity->admin_title) ? $entity->admin_title : (!empty($entity->title) ? $entity->title : check_plain(entity_label('fieldable_panels_pane', $entity)));
+    if (!empty($entity->admin_title)) {
+      $output = $entity->admin_title;
+    }
+    elseif (!empty($entity->title)) {
+      $output = $entity->title;
+    }
+    else {
+      $output = entity_label('fieldable_panels_pane', $entity);
+    }
+    // Make sure no XSS strings go through the title.
+    $output = filter_xss($output);
   }
   else {
     $output = t('Deleted/removed entity pane');
