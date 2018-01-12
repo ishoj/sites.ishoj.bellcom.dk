@@ -3,7 +3,7 @@ private
 sessions
 tmp
 vendor
-*.sql
+b*.sql
 *.gz
 
 # Numerous always-ignore extensions
@@ -42,7 +42,6 @@ validation-report.json
 validation-status.json
 
 # Drupal specific
-
 scripts/.admin_password.txt
 public_html/sites/sites.php
 public_html/sites/*.dd
