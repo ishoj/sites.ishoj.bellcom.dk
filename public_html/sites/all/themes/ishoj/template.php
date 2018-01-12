@@ -68,6 +68,25 @@ function ishoj_preprocess_page(&$variables) {
     }
   }
 
+  // Social Media link items
+  $variables['social_media_links'] = '';
+  $social_items = array(
+    'facebook',
+    'linkedin',
+    'twitter',
+    'youtube',
+  );
+
+  foreach ($social_items as $item) {
+    if (theme_get_setting($item . '-is-enabled') === 1) {
+      $variables['social_media_links'] .= (''
+        . '<a class="sprite sprite-' . $item . ' footer" href="'
+        . theme_get_setting($item . '-url') . '" title="' . theme_get_setting($item . '-img-alt')
+        . '"><span><span class="screen-reader">' . theme_get_setting($item . '-img-alt')
+        . '</span></span></a>' . "\n"
+      );
+    }
+  }
 }
 
 
