@@ -81,8 +81,8 @@ function ishoj_preprocess_page(&$variables) {
     if (theme_get_setting($item . '-is-enabled') === 1) {
       $variables['social_media_links'] .= (''
         . '<a class="sprite sprite-' . $item . ' footer" href="'
-        . theme_get_setting($item . '-url') . '" title="' . theme_get_setting($item . '-img-alt')
-        . '"><span><span class="screen-reader">' . theme_get_setting($item . '-img-alt')
+        . theme_get_setting($item . '-url') . '" title="' . theme_get_setting($item . '-link-title')
+        . '"><span><span class="screen-reader">' . theme_get_setting($item . '-link-title')
         . '</span></span></a>' . "\n"
       );
     }
