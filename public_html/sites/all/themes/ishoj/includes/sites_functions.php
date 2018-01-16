@@ -1,6 +1,5 @@
 <?php
 
-
 /************************************************************************/
 /***  FUNKTION: VIS AKTIVITETSLISTE UD FRA ARRANGØR_TID FRA ISHOJ.DK  ***/
 /************************************************************************/
@@ -72,28 +71,50 @@ function json_aktivitetsliste($tid) {
 }
 
 
-/****************************************************************/
-/***  FUNKTION: VIS ANDRE KOMMUNALE HJEMMESIDER FRA ISHOJ.DK  ***/
-/****************************************************************/
+/********************************************************************************/
+/***  FUNKTION: VIS ANDRE KOMMUNALE HJEMMESIDER -- FRA ISHOJ.DK ELLER LOKALT  ***/
+/********************************************************************************/
 function json_andre_kommunale_hjemmesider() {
+  $dropdown_begin = '<form>';
+  $dropdown_begin .= '<label for="hjemmesider">Andre hjemmesider</label>';
+  $dropdown_begin .= '<select name="hjemmesider" id="hjemmesider" class="sprite-menu">';
+  $dropdown_begin .= '<option value="0" selected="">Vælg en hjemmeside</option>';
+
+  $dropdown_end = '</select>';
+  $dropdown_end .= '</form>';
+
   $output = "";
-  $url = "http://www.ishoj.dk/json-andre-kommunale-hjemmesider?hest=" . rand();
-  $request = drupal_http_request($url);
 
-  if($request) {
-    $json_response = drupal_json_decode($request->data);
+  if (theme_get_setting('municipal-links-type') == 'local') {
+    $vid = taxonomy_vocabulary_machine_name_load('andre_kommunale_hjemmesider')->vid;
+    $taxonomy_tree = taxonomy_get_tree($vid);
 
-    $output .= '<form>';
-      $output .= '<label for="hjemmesider">Andre hjemmesider</label>';
-      $output .= '<select name="hjemmesider" id="hjemmesider" class="sprite-menu">';
-        $output .= '<option value="0" selected="">Vælg en hjemmeside</option>';
+    $output .= $dropdown_begin;
 
-        foreach ($json_response as $response_data) {
-          $output .= '<option value="' . $response_data['url'] . '">' . $response_data['title'] . '</option>';
-        }
+    foreach ($taxonomy_tree as $tax_item) {
+      $tax_term = taxonomy_term_load($tax_item->tid);
+      $tax_title = $tax_term->name;
+      $tax_url = $tax_term->field_url['und'][0]['url'];
 
-      $output .= '</select>';
-    $output .= '</form>';
+      $result .= sprintf("%s - %s\n", $tax_title, $tax_url);
+      $output .= '<option value="' . $tax_url . '">' . $tax_title . '</option>';
+    }
+
+    $output .= $dropdown_end;
+  } else {
+    $url = "http://www.ishoj.dk/json-andre-kommunale-hjemmesider?hest=" . rand();
+    $request = drupal_http_request($url);
+
+    if ($request) {
+      $json_response = drupal_json_decode($request->data);
+      $output .= $dropdown_begin;
+
+      foreach ($json_response as $response_data) {
+        $output .= '<option value="' . $response_data['url'] . '">' . $response_data['title'] . '</option>';
+      }
+
+      $output .= $dropdown_end;
+    }
   }
   return $output;
 }
@@ -129,9 +150,5 @@ function breaking() {
   }
   return $output;
 }
-
-
-
-
 
 ?>
