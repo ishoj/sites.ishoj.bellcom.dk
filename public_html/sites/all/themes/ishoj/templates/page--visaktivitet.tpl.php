@@ -379,13 +379,13 @@
             </div>
             <div class="grid-third sociale-medier">
               <?php print render($page['footer_sociale']); ?>
-              <h3>Følg os på sociale medier</h3>
+              <h3><?php print $second_column_title; ?></h3>
               <p>
                 <?php print $social_media_links; ?>
               </p>
             </div>
             <div class="grid-third">
-              <h3>Andre kommunale hjemmesider</h3>
+              <h3><?php print $third_column_title; ?></h3>
               <?php print json_andre_kommunale_hjemmesider(); ?>
               <!-- BYVÅBEN START -->
               <?php

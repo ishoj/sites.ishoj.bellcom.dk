@@ -87,6 +87,10 @@ function ishoj_preprocess_page(&$variables) {
       );
     }
   }
+
+  // Column titles
+  $variables['second_column_title'] = theme_get_setting('second-column-title');
+  $variables['third_column_title'] = theme_get_setting('third-column-title');
 }
 
 
@@ -166,3 +170,4 @@ function ishoj_panels_default_style_render_region($variables) {
     $output .= implode('', $variables['panes']);
     return $output;
 }
+
