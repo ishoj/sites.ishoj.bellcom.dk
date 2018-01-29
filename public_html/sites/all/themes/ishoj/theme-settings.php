@@ -64,5 +64,26 @@ function ishoj_form_system_theme_settings_alter(&$form, $form_state) {
       'remote' => t('Links pulled from http://ishoj.dk/ website')
     ),
   );
+
+
+  /*
+   * Column titles
+   */
+  $form['column-titles'] = array(
+    '#title' => t('Column titles'),
+    '#type' => 'fieldset',
+  );
+
+  $form['column-titles']['second-column-title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Second column title'),
+    '#default_value' => theme_get_setting('second-column-title'),
+  );
+
+  $form['column-titles']['third-column-title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Third column title'),
+    '#default_value' => theme_get_setting('third-column-title'),
+  );
 }
 
