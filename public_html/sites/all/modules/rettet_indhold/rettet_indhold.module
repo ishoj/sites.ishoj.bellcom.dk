@@ -62,13 +62,13 @@ function rettet_indhold_menu() {
   $items['rettet_indhold/%'] = array(
     'title' => 'Rettet indhold process',
     'description' => 'Rettet indhold process page',
-    'page callback' => 'rettet_indhold_process_page',
+    'page callback' => 'rettet_indhold_send_notofication',
     'page arguments' => array(1),
     'access arguments' => array('access content'));
   return $items;
 }
 
-function rettet_indhold_process_page($input) {
+function rettet_indhold_send_notofication($input) {
 
   $mail_to = variable_get("rettet_indhold_mail_to", 'bymedl@ishoj.dk');
   $mail_subject = variable_get("rettet_indhold__mail_subject", 'Updated nodes info');
