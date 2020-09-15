@@ -182,8 +182,10 @@
               </p>
             </div>
             <div class="grid-third">
-              <h3><?php print $third_column_title; ?></h3>
-              <?php print json_andre_kommunale_hjemmesider(); ?>
+              <?php if (!theme_get_setting('hide_municipal_websites_list')) : ?>
+                <h3><?php print $third_column_title; ?></h3>
+                <?php print json_andre_kommunale_hjemmesider(); ?>
+              <?php endif; ?> 
               <!-- BYVÅBEN START -->
               <?php
                 $logoContent = "<div class=\"logo-container\">";

@@ -85,5 +85,16 @@ function ishoj_form_system_theme_settings_alter(&$form, $form_state) {
     '#title' => t('Third column title'),
     '#default_value' => theme_get_setting('third-column-title'),
   );
+  $form['column-titles']['hide_municipal_websites_list'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide list with others municipal websites'),
+    '#default_value' => theme_get_setting('hide_municipal_websites_list'),
+  );
+  $form['column-titles']['show_address_description_field'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show body field content of address term'),
+    '#default_value' => theme_get_setting('show_address_description_field'),
+  );
+
 }
 
