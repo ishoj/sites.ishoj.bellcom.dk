@@ -134,7 +134,7 @@ $output .= "<section id=\"node-" . $node->nid . "\" class=\"" . $classes . " art
           $output .= "<!-- FOTO START -->";
           if($node->field_os2web_base_field_image) {
             hide($content['field_image_flexslider']);
-            $output .= render($content['field_os2web_base_field_image']);
+            $output .= render($content['field_os2web_base_field_image'][0]);
             if($node->field_billedtekst) {
               $output .= "<p class=\"foto-tekst\">" . $node->field_billedtekst['und'][0]['value'] . "</p>";
             }
@@ -188,7 +188,7 @@ $output .= "<section id=\"node-" . $node->nid . "\" class=\"" . $classes . " art
         $output .= "<!-- TEKSTINDHOLD START -->";
         hide($content['comments']);
         hide($content['links']);
-        $output .= render($content);
+        $output .= render($content['body']);
         $output .= "<!-- TEKSTINDHOLD SLUT -->";
 
         // MIKROARTIKLER
